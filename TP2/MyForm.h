@@ -35,6 +35,9 @@ namespace TP2 {
 			}
 		}
 	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::Label^ outName;
 	protected:
 
 	private:
@@ -51,11 +54,14 @@ namespace TP2 {
 		void InitializeComponent(void)
 		{
 			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->outName = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(196, 216);
+			this->button1->Location = System::Drawing::Point(196, 199);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(371, 119);
 			this->button1->TabIndex = 0;
@@ -63,19 +69,54 @@ namespace TP2 {
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(114, 115);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(59, 20);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"NAMA ";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(196, 109);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(371, 26);
+			this->textBox1->TabIndex = 2;
+			// 
+			// outName
+			// 
+			this->outName->AutoSize = true;
+			this->outName->Location = System::Drawing::Point(192, 368);
+			this->outName->Name = L"outName";
+			this->outName->Size = System::Drawing::Size(42, 20);
+			this->outName->TabIndex = 3;
+			this->outName->Text = L"label";
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(767, 553);
+			this->Controls->Add(this->outName);
+			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->button1);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ nama = this->textBox1->Text;
+		this->outName->Text = "Hello " + nama;
+	}
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		this->outName->Text = "";
 	}
 	};
 }
